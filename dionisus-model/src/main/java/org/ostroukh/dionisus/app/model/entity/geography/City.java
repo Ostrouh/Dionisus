@@ -2,6 +2,8 @@ package org.ostroukh.dionisus.app.model.entity.geography;
 
 import org.ostroukh.dionisus.app.model.entity.base.AbstractEntity;
 
+import java.util.HashSet;
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -58,5 +60,31 @@ public class City extends AbstractEntity{
 
     public void setEstablishments(Set<Establishment> establishments) {
         this.establishments = establishments;
+    }
+
+
+    /**
+     * Adds specified establishment to the city establishment list
+     * @param establishment
+     */
+    public void addEstablishment(final Establishment establishment) {
+        Objects.requireNonNull(establishment, "establishment parameter is not initialized");
+        if(establishments == null) {
+            establishments = new HashSet<>();
+        }
+        establishments.add(establishment);
+        establishment.setCity(this);
+    }
+
+    /**
+     * Removes specified station from city station list
+     * @param establishment
+     */
+    public void removeEstablishment(Establishment establishment) {
+        Objects.requireNonNull(establishment, "establishment parameter is not initialized");
+        if(establishments == null) {
+            return;
+        }
+        establishments.remove(establishment);
     }
 }
