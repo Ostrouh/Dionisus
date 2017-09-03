@@ -1,6 +1,7 @@
 package org.ostroukh.dionisus.app.model.entity.geography;
 
 import org.ostroukh.dionisus.app.model.entity.base.AbstractEntity;
+import org.ostroukh.dionisus.app.model.entity.establishments.EstablishmentType;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -29,6 +30,10 @@ public class City extends AbstractEntity{
      * city
      */
     private Set<Establishment> establishments;
+
+    public City(final String name){
+        this.name = name;
+    }
 
     public String getName() {
         return name;
@@ -65,15 +70,16 @@ public class City extends AbstractEntity{
 
     /**
      * Adds specified establishment to the city establishment list
-     * @param establishment
+     * @param establishmentType
      */
-    public void addEstablishment(final Establishment establishment) {
-        Objects.requireNonNull(establishment, "establishment parameter is not initialized");
+    public Establishment addEstablishment(final EstablishmentType establishmentType) {
         if(establishments == null) {
             establishments = new HashSet<>();
         }
+        Establishment establishment = new Establishment(this, establishmentType);
         establishments.add(establishment);
-        establishment.setCity(this);
+
+        return establishment;
     }
 
     /**

@@ -3,6 +3,7 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.ostroukh.dionisus.app.model.entity.establishments.EstablishmentType;
 
 /**
  * Contains unit-tests to check functionality of {@link City} class
@@ -13,39 +14,28 @@ public class CityTest {
 
     @Before
     public void setup(){
-        city = new City();
+        city = new City("Grodno");
     }
 
     @Test
     public void testAddValidEstablishmentSuccess() {
-        Establishment establishment = new Establishment();
-
-        City city = new City();
-        city.addEstablishment(establishment);
+        Establishment establishment = city.addEstablishment(EstablishmentType.BAR);
 
         assertTrue(containsEstablishment(city, establishment));
+        assertEquals(city, establishment.getCity());
     }
 
     @Test(expected = NullPointerException.class)
-    public void testAddNullEstablishmentFailure(){
+    public void testAddEstablNullEstablishmentTypeFailure(){
         city.addEstablishment(null);
 
         assertTrue(false);
     }
 
     @Test
-    public void testDuplicateEstablishmentFailure(){
-        Establishment establishment = new Establishment();
-        city.addEstablishment(establishment);
-        city.addEstablishment(establishment);
-
-        assertEquals(city.getEstablishments().size(), 1);
-    }
-
-    @Test
     public void testRemoveEstablishmentSuccess(){
-        Establishment establishment = new Establishment();
-        city.addEstablishment(establishment);
+        Establishment establishment = city.addEstablishment(EstablishmentType.BAR);
+
         city.removeEstablishment(establishment);
 
         assertTrue(city.getEstablishments().isEmpty());
