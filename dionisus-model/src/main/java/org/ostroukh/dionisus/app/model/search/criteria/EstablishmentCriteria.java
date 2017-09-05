@@ -1,10 +1,10 @@
 package org.ostroukh.dionisus.app.model.search.criteria;
 
-import org.ostroukh.dionisus.app.model.entity.establishments.EstablishmentType;
+import org.ostroukh.dionisus.app.model.entity.establishment.EstablishmentType;
 import org.ostroukh.dionisus.app.model.entity.geography.Address;
 
 /**
- * Filtering criteria for search establishments operation
+ * Filtering criteria for search establishment operation
  */
 public class EstablishmentCriteria {
 
@@ -14,7 +14,7 @@ public class EstablishmentCriteria {
     private Address establishmentAddress;
 
     /**
-     * Returns filtering criteria to search establishments that
+     * Returns filtering criteria to search establishment that
      * contains specified name parameter
      * @param cityName
      */

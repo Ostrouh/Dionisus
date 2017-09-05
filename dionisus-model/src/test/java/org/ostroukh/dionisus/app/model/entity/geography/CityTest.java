@@ -3,7 +3,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.ostroukh.dionisus.app.model.entity.establishments.EstablishmentType;
+import org.ostroukh.dionisus.app.model.entity.establishment.Establishment;
+import org.ostroukh.dionisus.app.model.entity.establishment.EstablishmentType;
 
 /**
  * Contains unit-tests to check functionality of {@link City} class
@@ -19,7 +20,7 @@ public class CityTest {
 
     @Test
     public void testAddValidEstablishmentSuccess() {
-        Establishment establishment = city.addEstablishment(EstablishmentType.BAR);
+        Establishment establishment = city.addEstablishment("Aurora", EstablishmentType.BAR);
 
         assertTrue(containsEstablishment(city, establishment));
         assertEquals(city, establishment.getCity());
@@ -27,14 +28,14 @@ public class CityTest {
 
     @Test(expected = NullPointerException.class)
     public void testAddEstablNullEstablishmentTypeFailure(){
-        city.addEstablishment(null);
+        city.addEstablishment("Aurora",null);
 
         assertTrue(false);
     }
 
     @Test
     public void testRemoveEstablishmentSuccess(){
-        Establishment establishment = city.addEstablishment(EstablishmentType.BAR);
+        Establishment establishment = city.addEstablishment("Aurora",EstablishmentType.BAR);
 
         city.removeEstablishment(establishment);
 

@@ -1,18 +1,23 @@
-package org.ostroukh.dionisus.app.model.entity.geography;
+package org.ostroukh.dionisus.app.model.entity.establishment;
 
 import org.ostroukh.dionisus.app.model.entity.base.AbstractEntity;
-import org.ostroukh.dionisus.app.model.entity.establishments.EstablishmentType;
+import org.ostroukh.dionisus.app.model.entity.establishment.EstablishmentType;
+import org.ostroukh.dionisus.app.model.entity.geography.Address;
+import org.ostroukh.dionisus.app.model.entity.geography.City;
+import org.ostroukh.dionisus.app.model.entity.geography.Coordinate;
 
 import java.util.Objects;
 
 /**
- * Entertaining establishments where can order the table
+ * Entertaining establishment where can order the table
  * @author Eugene Ostrouh
  */
 public class Establishment extends AbstractEntity{
     private City city;
 
     private Address address;
+
+    private String name;
 
     /**
      * (Optional) Phone of the administrator of the establishment
@@ -28,7 +33,8 @@ public class Establishment extends AbstractEntity{
      * {@link City} functionality instead
      * @param city
      */
-    public Establishment(final City city, final EstablishmentType establishmentType){
+    public Establishment(final String name, final City city, final EstablishmentType establishmentType){
+        this.name = name;
         this.city = Objects.requireNonNull(city);
         this.establishmentType = Objects.requireNonNull(establishmentType);
     }
@@ -44,6 +50,15 @@ public class Establishment extends AbstractEntity{
 
     public void setAddress(Address address) {
         this.address = address;
+    }
+
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getPhone() {

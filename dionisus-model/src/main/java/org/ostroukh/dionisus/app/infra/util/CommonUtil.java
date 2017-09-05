@@ -1,4 +1,4 @@
-package org.ostroukh.dionisus.app.infra;
+package org.ostroukh.dionisus.app.infra.util;
 
 import org.ostroukh.dionisus.app.model.entity.geography.City;
 

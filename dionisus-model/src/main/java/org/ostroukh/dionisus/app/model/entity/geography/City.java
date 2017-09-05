@@ -1,14 +1,15 @@
 package org.ostroukh.dionisus.app.model.entity.geography;
 
 import org.ostroukh.dionisus.app.model.entity.base.AbstractEntity;
-import org.ostroukh.dionisus.app.model.entity.establishments.EstablishmentType;
+import org.ostroukh.dionisus.app.model.entity.establishment.Establishment;
+import org.ostroukh.dionisus.app.model.entity.establishment.EstablishmentType;
 
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
 /**
- * Any locality that contains establishments for table reserving
+ * Any locality that contains establishment for table reserving
  * @author Eugene Ostroukh
  */
 public class City extends AbstractEntity{
@@ -26,7 +27,7 @@ public class City extends AbstractEntity{
     private String region;
 
     /**
-     * Set of entertaining establishments that is linked to this
+     * Set of entertaining establishment that is linked to this
      * city
      */
     private Set<Establishment> establishments;
@@ -70,13 +71,15 @@ public class City extends AbstractEntity{
 
     /**
      * Adds specified establishment to the city establishment list
+     * @param name
      * @param establishmentType
+     * @return
      */
-    public Establishment addEstablishment(final EstablishmentType establishmentType) {
+    public Establishment addEstablishment(String name, final EstablishmentType establishmentType) {
         if(establishments == null) {
             establishments = new HashSet<>();
         }
-        Establishment establishment = new Establishment(this, establishmentType);
+        Establishment establishment = new Establishment(name, this, establishmentType);
         establishments.add(establishment);
 
         return establishment;

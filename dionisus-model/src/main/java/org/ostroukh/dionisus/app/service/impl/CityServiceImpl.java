@@ -1,21 +1,21 @@
 package org.ostroukh.dionisus.app.service.impl;
 
-import org.ostroukh.dionisus.app.infra.CommonUtil;
+import org.ostroukh.dionisus.app.infra.util.CommonUtil;
 import org.ostroukh.dionisus.app.model.entity.geography.City;
-import org.ostroukh.dionisus.app.service.GeographicService;
+import org.ostroukh.dionisus.app.service.CityService;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Default implementation of the {@link GeographicService}
+ * Default implementation of the {@link CityService}
  * @author Eugene Ostroukh
  */
-public class GeographicServiceImpl implements GeographicService {
+public class CityServiceImpl implements CityService {
 
     private final List<City> cities;
 
-    public GeographicServiceImpl() {
+    public CityServiceImpl() {
         cities = new ArrayList<>();
     }
 

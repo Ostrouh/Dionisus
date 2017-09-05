@@ -1,7 +1,7 @@
-package org.ostroukh.dionisus.app.model.entity.establishments;
+package org.ostroukh.dionisus.app.model.entity.establishment;
 
 /**
- * Type of the establishments
+ * Type of the establishment
  * that we support in the application
  * @author Eugene Ostroukh
  *

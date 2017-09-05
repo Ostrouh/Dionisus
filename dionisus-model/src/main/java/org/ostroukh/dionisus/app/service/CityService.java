@@ -9,7 +9,7 @@ import java.util.List;
  * over geographic entities
  * @author Eugene Ostroukh
  */
-public interface GeographicService {
+public interface CityService {
     /**
      * Returns list of existing cities
      * @return

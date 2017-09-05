@@ -4,20 +4,20 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import org.ostroukh.dionisus.app.model.entity.geography.City;
-import org.ostroukh.dionisus.app.service.impl.GeographicServiceImpl;
+import org.ostroukh.dionisus.app.service.impl.CityServiceImpl;
 
 import java.util.List;
 
 /**
- *Contain unit-tests for {@link GeographicServiceImpl}
+ *Contain unit-tests for {@link CityServiceImpl}
  * @author Eugene Ostroukh
  */
-public class GeographicServiceImplTest {
-    private GeographicService service;
+public class CityServiceImplTest {
+    private CityService service;
 
     @Before
     public void setup(){
-        service = new GeographicServiceImpl();
+        service = new CityServiceImpl();
     }
 
     @Test
