@@ -10,7 +10,6 @@
 
     <packaging>pom</packaging>
     <modules>
-        <module>dionisus-presentation</module>
         <module>dionisus-model</module>
         <module>dionisus-persistence</module>
         <module>dionisus-presentation</module>
