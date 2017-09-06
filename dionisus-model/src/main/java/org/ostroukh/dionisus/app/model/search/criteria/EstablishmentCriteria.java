@@ -1,48 +1,81 @@
 package org.ostroukh.dionisus.app.model.search.criteria;
 
 import org.ostroukh.dionisus.app.model.entity.establishment.EstablishmentType;
-import org.ostroukh.dionisus.app.model.entity.geography.Address;
+import org.ostroukh.dionisus.app.model.entity.geography.City;
+
+import java.util.Objects;
 
 /**
- * Filtering criteria for search establishment operation
+ * Filtering criteria for search establishment operation.
+ * The filter can be a name, a city name and a type of catering ectablishment.
+ * @author Eugene Ostroukh
  */
 public class EstablishmentCriteria {
+    /**
+     *Catering establishment's name
+     */
+    private String name;
 
-    private String cityName;
+    private City city;
     private EstablishmentType establishmentType;
 
-    private Address establishmentAddress;
 
     /**
      * Returns filtering criteria to search establishment that
-     * contains specified name parameter
-     * @param cityName
+     * contains specified establishment's name parameter
+     * @param name
      */
-    public EstablishmentCriteria(String cityName) {
-        this.cityName = cityName;
+    public EstablishmentCriteria(String name) {
+        this.name = Objects.requireNonNull(name);
     }
 
+    /**
+     * Returns filtering criteria to search establishment that
+     * contains specified city parameter
+     * @param city
+     */
+    public EstablishmentCriteria(City city) {
+        this.city = Objects.requireNonNull(city);
+    }
+
+    /**
+     * Returns filtering criteria to search establishment that
+     * contains specified establishmentType parameter
+     * @param establishmentType
+     */
     public EstablishmentCriteria(EstablishmentType establishmentType) {
-        this.establishmentType = establishmentType;
+        this.establishmentType = Objects.requireNonNull(establishmentType);
     }
 
     public EstablishmentCriteria() {
     }
 
-    public static EstablishmentCriteria byName(EstablishmentType establishmentType){
+    public static EstablishmentCriteria byType(EstablishmentType establishmentType){
         return new EstablishmentCriteria(establishmentType);
     }
 
-    public static EstablishmentCriteria byType(String establishmentName){
+    public static EstablishmentCriteria byName(String establishmentName){
         return new EstablishmentCriteria(establishmentName);
     }
 
-    public String getCityName() {
-        return cityName;
+    public static EstablishmentCriteria byCityName(String cityName){
+        return new EstablishmentCriteria(cityName);
     }
 
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public City getCity() {
+        return city;
+    }
+
+    public void setCity(String cityName) {
+        this.city = city;
     }
 
     public EstablishmentType getEstablishmentType() {
@@ -53,11 +86,4 @@ public class EstablishmentCriteria {
         this.establishmentType = establishmentType;
     }
 
-    public Address getEstablishmentAddress() {
-        return establishmentAddress;
-    }
-
-    public void setEstablishmentAddress(Address establishmentAddress) {
-        this.establishmentAddress = establishmentAddress;
-    }
 }
