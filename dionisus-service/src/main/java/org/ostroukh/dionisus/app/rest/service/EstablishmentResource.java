@@ -19,6 +19,6 @@ public class EstablishmentResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<String> findCities(){
-        return Lists.newArrayList("Палуба", "Гудини");
+        return Lists.newArrayList("Paluba", "Hudini");
     }
 }

@@ -1,6 +1,6 @@
 package org.ostroukh.dionisus.app.model.search.criteria.range;
 
-import org.ostroukh.dionisus.app.infra.exeption.flow.InvalidParemeterException;
+import org.ostroukh.dionisus.app.infra.util.Checks;
 
 /**
  * Pagination parameters
@@ -13,17 +13,15 @@ public class RangeCriteria {
     private final int page;
 
     /**
-     * Number of elements per page
+     * Number of elements per page. Zero means that we should return all the
+     * elements
      */
     private final int rowCount;
 
     public RangeCriteria(int page, int rowCount) {
-        if(page < 0){
-            throw new InvalidParemeterException("Index \"" + page + "\" is incorrect");
-        }
-        if(rowCount < 0){
-            throw new InvalidParemeterException("Row count \"" + page + "\" is incorrect");
-        }
+        Checks.checkParameter(page > 0, "Index \"" + page + "\" is incorrect");
+        Checks.checkParameter(rowCount > 0, "Row count \"" + page + "\" is incorrect");
+
         this.page = page;
         this.rowCount = rowCount;
     }

@@ -18,6 +18,6 @@ public class CityResource {
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<String> findCities(){
-        return Lists.newArrayList("Гродно", "Минск");
+        return Lists.newArrayList("Grodno", "Minsk");
     }
 }
