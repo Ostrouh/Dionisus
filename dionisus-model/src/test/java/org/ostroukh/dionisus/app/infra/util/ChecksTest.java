@@ -25,7 +25,7 @@ public class ChecksTest {
 
     @Test
     public void testCheckParameterNoException(){
-        Checks.checkParameter(false, "test");
+        Checks.checkParameter(true, "test");
         assertTrue(true);
     }
 }
