@@ -6,7 +6,7 @@ package org.ostroukh.dionisus.app.model.entity.geography;
  * @author Eugene Ostroukh
  */
 public class Address {
-    private String zipCode;
+    private String postalCode;
 
     private String street;
 
@@ -18,12 +18,12 @@ public class Address {
      */
     private String apartment;
 
-    public String getZipCode() {
-        return zipCode;
+    public String getPostalCode() {
+        return postalCode;
     }
 
-    public void setZipCode(String zipCode) {
-        this.zipCode = zipCode;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     public String getStreet() {
