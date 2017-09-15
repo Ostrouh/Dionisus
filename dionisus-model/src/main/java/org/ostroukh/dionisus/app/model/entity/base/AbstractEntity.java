@@ -1,5 +1,7 @@
 package org.ostroukh.dionisus.app.model.entity.base;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.ostroukh.dionisus.app.model.entity.person.Account;
 
 import java.time.LocalDateTime;
@@ -76,20 +78,12 @@ public abstract class AbstractEntity {
 
     @Override
     public int hashCode() {
-        final int prime = 31;
-        int result = 1;
-        result = result * prime + id;
-        return result;
+        return HashCodeBuilder.reflectionHashCode(this);
     }
 
     @Override
     public boolean equals(Object obj) {
-        if(this == obj) return true;
-        if(obj == null) return false;
-        if(getClass() != obj.getClass()) return false;
-        AbstractEntity other = (AbstractEntity)obj;
-        if(id != other.id) return false;
 
-        return true;
+        return EqualsBuilder.reflectionEquals(this, obj);
     }
 }

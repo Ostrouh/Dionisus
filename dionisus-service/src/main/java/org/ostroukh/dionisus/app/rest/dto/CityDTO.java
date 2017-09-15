@@ -9,7 +9,7 @@ import org.ostroukh.dionisus.app.rest.dto.base.BaseDTO;
 public class CityDTO extends BaseDTO<City>{
     private String name;
     private String district;
-    private String rerion;
+    private String region;
 
     public String getName() {
         return name;
@@ -27,11 +27,11 @@ public class CityDTO extends BaseDTO<City>{
         this.district = district;
     }
 
-    public String getRerion() {
-        return rerion;
+    public String getRegion() {
+        return region;
     }
 
-    public void setRerion(String rerion) {
-        this.rerion = rerion;
+    public void setRegion(String rerion) {
+        this.region = rerion;
     }
 }
