@@ -59,7 +59,7 @@ public class EstablishmentCriteria {
     }
 
     public static EstablishmentCriteria byCityName(String cityName){
-        return new EstablishmentCriteria(cityName);
+        return new EstablishmentCriteria(new City(cityName));
     }
 
     public String getName() {
