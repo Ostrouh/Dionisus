@@ -88,6 +88,20 @@ public class CityServiceImplTest {
     }
 
     @Test
+    public void testSearchEstablByEstablTypeNotFound(){
+        City city = new City("Grodno");
+
+        city.addEstablishment("Paluba", EstablishmentType.CAFE);
+        city.addEstablishment("Veras", EstablishmentType.CAFE);
+
+        List<Establishment> establishments =
+                service.searchEstablishments(new EstablishmentCriteria(EstablishmentType.CAFE), new RangeCriteria(1, 5));
+
+        assertNotNull(establishments);
+        assertTrue(establishments.isEmpty());
+    }
+
+    @Test
     public void testSaveNewCitySuccess(){
         City city = new City("Grodno");
         service.saveCity(city);

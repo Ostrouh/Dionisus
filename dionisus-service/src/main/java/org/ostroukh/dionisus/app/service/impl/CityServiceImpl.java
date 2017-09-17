@@ -38,22 +38,14 @@ public class CityServiceImpl implements CityService {
 
     @Override
     public List<Establishment> searchEstablishments(EstablishmentCriteria criteria, RangeCriteria rangeCriteria) {
-        Optional<Set<Establishment>> establs = cities.stream()
-                .filter(city -> StringUtils.isEmpty(criteria.getName())
-                                || criteria.getCity().getName().equals(city.getName()))
-                .map(city -> city.getEstablishments())
-                .reduce((establs1, establs2) -> {
-                    Set<Establishment> newEstabls = new HashSet<>(establs2);
-                    return newEstabls;
-                });
-        if(!establs.isPresent()){
-            return Collections.emptyList();
+        Set<Establishment> establishments = new HashSet<>();
+
+        for(City city: cities){
+            establishments.addAll(city.getEstablishments());
         }
 
-        return establs.get()
-                .stream()
-                .filter(establishment -> criteria.getEstablishmentType() == null
-                || establishment.getEstablishmentType() == criteria.getEstablishmentType())
+        return establishments.stream()
+                .filter(establishment -> establishment.match(criteria))
                 .collect(Collectors.toList());
     }
 

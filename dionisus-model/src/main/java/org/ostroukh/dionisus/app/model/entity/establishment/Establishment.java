@@ -1,10 +1,12 @@
 package org.ostroukh.dionisus.app.model.entity.establishment;
 
+import org.apache.commons.lang3.StringUtils;
 import org.ostroukh.dionisus.app.model.entity.base.AbstractEntity;
 import org.ostroukh.dionisus.app.model.entity.establishment.EstablishmentType;
 import org.ostroukh.dionisus.app.model.entity.geography.Address;
 import org.ostroukh.dionisus.app.model.entity.geography.City;
 import org.ostroukh.dionisus.app.model.entity.geography.Coordinate;
+import org.ostroukh.dionisus.app.model.search.criteria.EstablishmentCriteria;
 
 import java.util.Objects;
 
@@ -83,5 +85,20 @@ public class Establishment extends AbstractEntity{
 
     public void setEstablishmentType(EstablishmentType establishmentType) {
         this.establishmentType = establishmentType;
+    }
+
+    public boolean match(EstablishmentCriteria criteria){
+        Objects.requireNonNull(criteria, "Criteria is not initialized");
+        if(!StringUtils.isEmpty(criteria.getName())) {
+            if(!city.getName().equals(criteria.getCity().getName())) {
+                return false;
+            }
+        }
+        if(criteria.getEstablishmentType() != null){
+            if(establishmentType != criteria.getEstablishmentType()){
+                return false;
+            }
+        }
+        return true;
     }
 }
