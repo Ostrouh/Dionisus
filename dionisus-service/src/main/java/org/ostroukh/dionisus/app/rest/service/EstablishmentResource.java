@@ -1,6 +1,7 @@
 package org.ostroukh.dionisus.app.rest.service;
 
 import jersey.repackaged.com.google.common.collect.Lists;
+import org.ostroukh.dionisus.app.rest.service.base.BaseResource;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -14,7 +15,7 @@ import java.util.List;
  * @author Eugene Ostroukh
  */
 
-public class EstablishmentResource {
+public class EstablishmentResource extends BaseResource{
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
