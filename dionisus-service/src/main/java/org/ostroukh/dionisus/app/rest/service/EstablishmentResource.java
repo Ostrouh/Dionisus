@@ -2,6 +2,10 @@ package org.ostroukh.dionisus.app.rest.service;
 
 import jersey.repackaged.com.google.common.collect.Lists;
 import org.ostroukh.dionisus.app.rest.service.base.BaseResource;
+import org.ostroukh.dionisus.app.service.EstablishmentService;
+import org.ostroukh.dionisus.app.service.impl.EstablishmentServiceImpl;
+import org.ostroukh.dionisus.app.service.transform.Transformer;
+import org.ostroukh.dionisus.app.service.transform.impl.SimpleDTOTransformer;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -16,6 +20,20 @@ import java.util.List;
  */
 
 public class EstablishmentResource extends BaseResource{
+    /**
+     * Underlying source of data
+     */
+    private final EstablishmentService service;
+
+    /**
+     * DTO <--> Entity transformer
+     */
+    private final Transformer transformer;
+
+    public EstablishmentResource() {
+        service = new EstablishmentServiceImpl();
+        transformer = new SimpleDTOTransformer();
+    }
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)

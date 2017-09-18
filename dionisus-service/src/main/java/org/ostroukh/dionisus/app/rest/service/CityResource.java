@@ -1,6 +1,6 @@
 package org.ostroukh.dionisus.app.rest.service;
 
-import jersey.repackaged.com.google.common.collect.Lists;
+import org.apache.commons.lang3.math.NumberUtils;
 import org.ostroukh.dionisus.app.model.entity.establishment.EstablishmentType;
 import org.ostroukh.dionisus.app.model.entity.geography.City;
 import org.ostroukh.dionisus.app.rest.dto.CityDTO;
@@ -14,6 +14,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Path("cities")
@@ -64,8 +65,22 @@ public class CityResource extends BaseResource{
         service.saveCity(transformer.untransform(dto, City.class));
     }
 
+    /**
+     * Returns city with specified id
+     * @param cityId
+     * @return
+     */
     @Path("/{cityId}")
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response findCityById()
+    public Response findCityById(@PathParam("cityId") final String cityId){
+        if(!NumberUtils.isNumber(cityId)){
+            return BAD_REQUEST;
+        }
+        Optional<City> city = service.findCityById(NumberUtils.toInt(cityId));
+        if(!city.isPresent()){
+            return NOT_FOUND;
+        }
+        return ok(transformer.transform(city.get(), CityDTO.class));
+    }
 }
