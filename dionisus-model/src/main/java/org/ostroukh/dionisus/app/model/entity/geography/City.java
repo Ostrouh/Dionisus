@@ -1,5 +1,6 @@
 package org.ostroukh.dionisus.app.model.entity.geography;
 
+import org.ostroukh.dionisus.app.infra.util.CommonUtil;
 import org.ostroukh.dionisus.app.model.entity.base.AbstractEntity;
 import org.ostroukh.dionisus.app.model.entity.establishment.Establishment;
 import org.ostroukh.dionisus.app.model.entity.establishment.EstablishmentType;
@@ -27,7 +28,7 @@ public class City extends AbstractEntity{
     private String region;
 
     /**
-     * Set of entertaining establishment that is linked to this
+     * Set of entertaining establishments that is linked to this
      * city
      */
     private Set<Establishment> establishments;
@@ -64,7 +65,7 @@ public class City extends AbstractEntity{
     }
 
     public Set<Establishment> getEstablishments() {
-        return establishments;
+        return CommonUtil.getSafeSet(establishments);
     }
 
     public void setEstablishments(Set<Establishment> establishments) {
@@ -78,7 +79,7 @@ public class City extends AbstractEntity{
      * @param establishmentType
      * @return
      */
-    public Establishment addEstablishment(String name, final EstablishmentType establishmentType) {
+    public Establishment addEstablishment(final String name, final EstablishmentType establishmentType) {
         if(establishments == null) {
             establishments = new HashSet<>();
         }

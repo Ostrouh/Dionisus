@@ -74,7 +74,7 @@ public class CityResource extends BaseResource{
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public Response findCityById(@PathParam("cityId") final String cityId){
-        if(!NumberUtils.isNumber(cityId)){
+        if(!NumberUtils.isCreatable(cityId)){
             return BAD_REQUEST;
         }
         Optional<City> city = service.findCityById(NumberUtils.toInt(cityId));

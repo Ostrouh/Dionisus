@@ -1,6 +1,5 @@
 package org.ostroukh.dionisus.app.rest.service;
 
-import jersey.repackaged.com.google.common.collect.Lists;
 import org.ostroukh.dionisus.app.rest.service.base.BaseResource;
 import org.ostroukh.dionisus.app.service.EstablishmentService;
 import org.ostroukh.dionisus.app.service.impl.EstablishmentServiceImpl;
@@ -11,6 +10,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.Arrays;
 import java.util.List;
 
 @Path("establishments")
@@ -38,6 +38,6 @@ public class EstablishmentResource extends BaseResource{
     @GET
     @Produces(MediaType.APPLICATION_JSON)
     public List<String> findEstablishments(){
-        return Lists.newArrayList("Paluba", "Hudini");
+        return Arrays.asList("Paluba", "Hudini");
     }
 }

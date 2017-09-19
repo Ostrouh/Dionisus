@@ -36,7 +36,7 @@ public class Establishment extends AbstractEntity{
      * @param city
      */
     public Establishment(final String name, final City city, final EstablishmentType establishmentType){
-        this.name = name;
+        this.name = Objects.requireNonNull(name);
         this.city = Objects.requireNonNull(city);
         this.establishmentType = Objects.requireNonNull(establishmentType);
     }
@@ -89,16 +89,17 @@ public class Establishment extends AbstractEntity{
 
     public boolean match(EstablishmentCriteria criteria){
         Objects.requireNonNull(criteria, "Criteria is not initialized");
-        if(!StringUtils.isEmpty(criteria.getName())) {
-            if(!city.getName().equals(criteria.getCity().getName())) {
-                return false;
-            }
-        }
         if(criteria.getEstablishmentType() != null){
             if(establishmentType != criteria.getEstablishmentType()){
                 return false;
             }
         }
+        if(!StringUtils.isEmpty(criteria.getName())) {
+            if(!city.getName().equals(criteria.getCity().getName())) {
+                return false;
+            }
+        }
+
         return true;
     }
 }

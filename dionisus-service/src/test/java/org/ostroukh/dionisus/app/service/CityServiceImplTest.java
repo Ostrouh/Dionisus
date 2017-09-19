@@ -80,8 +80,10 @@ public class CityServiceImplTest {
         city.addEstablishment("Paluba", EstablishmentType.CAFE);
         city.addEstablishment("Veras", EstablishmentType.CAFE);
 
+        service.saveCity(city);
+
         List<Establishment> establishments =
-        service.searchEstablishments(new EstablishmentCriteria(EstablishmentType.CAFE), new RangeCriteria(1, 5));
+        service.searchEstablishments(EstablishmentCriteria.byType(EstablishmentType.CAFE), new RangeCriteria(1, 5));
 
         assertNotNull(establishments);
         assertEquals(establishments.size(), 2);
