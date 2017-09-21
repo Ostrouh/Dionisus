@@ -35,10 +35,9 @@ public class CityTest {
 
     @Test
     public void testRemoveEstablishmentSuccess(){
-        Establishment establishment = city.addEstablishment("Aurora",EstablishmentType.BAR);
+        Establishment establishment = city.addEstablishment("BAZA",EstablishmentType.CLUB);
 
         city.removeEstablishment(establishment);
-
         assertTrue(city.getEstablishments().isEmpty());
     }
 

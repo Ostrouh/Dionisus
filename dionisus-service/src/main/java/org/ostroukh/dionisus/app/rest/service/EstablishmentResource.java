@@ -4,7 +4,7 @@ import org.ostroukh.dionisus.app.rest.service.base.BaseResource;
 import org.ostroukh.dionisus.app.service.EstablishmentService;
 import org.ostroukh.dionisus.app.service.impl.EstablishmentServiceImpl;
 import org.ostroukh.dionisus.app.service.transform.Transformer;
-import org.ostroukh.dionisus.app.service.transform.impl.SimpleDTOTransformer;
+import org.ostroukh.dionisus.app.service.transform.impl.TransformerImpl;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -32,7 +32,7 @@ public class EstablishmentResource extends BaseResource{
 
     public EstablishmentResource() {
         service = new EstablishmentServiceImpl();
-        transformer = new SimpleDTOTransformer();
+        transformer = new TransformerImpl();
     }
 
     @GET

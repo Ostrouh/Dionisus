@@ -78,7 +78,12 @@ public abstract class AbstractEntity {
 
     @Override
     public int hashCode() {
-        return HashCodeBuilder.reflectionHashCode(this);
+//        return HashCodeBuilder.reflectionHashCode(17, 37,this);
+
+        return new HashCodeBuilder(17, 37)
+                .append(id)
+                .append(createdAt)
+                .toHashCode();
     }
 
     @Override

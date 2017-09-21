@@ -11,7 +11,6 @@ import java.util.Set;
 
 /**
  * Contains utility functions of the general purpose
- * @author Eugene Ostroukh
  */
 
 public class CommonUtil {

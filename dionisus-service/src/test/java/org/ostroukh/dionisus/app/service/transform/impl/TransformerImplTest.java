@@ -11,15 +11,15 @@ import java.security.InvalidParameterException;
 import static org.junit.Assert.*;
 
 /**
- * Verifies functionality of the {@link SimpleDTOTransformer}
+ * Verifies functionality of the {@link TransformerImpl}
  * unit
  */
-public class SimpleDTOTransformerTest {
+public class TransformerImplTest {
     private Transformer transformer;
 
     @Before
     public void setup(){
-        transformer = new SimpleDTOTransformer();
+        transformer = new TransformerImpl();
     }
 
     @Test

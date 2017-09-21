@@ -8,7 +8,7 @@ import org.ostroukh.dionisus.app.rest.service.base.BaseResource;
 import org.ostroukh.dionisus.app.service.CityService;
 import org.ostroukh.dionisus.app.service.impl.CityServiceImpl;
 import org.ostroukh.dionisus.app.service.transform.Transformer;
-import org.ostroukh.dionisus.app.service.transform.impl.SimpleDTOTransformer;
+import org.ostroukh.dionisus.app.service.transform.impl.TransformerImpl;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -36,7 +36,7 @@ public class CityResource extends BaseResource{
 
     public CityResource() {
         service = new CityServiceImpl();
-        transformer = new SimpleDTOTransformer();
+        transformer = new TransformerImpl();
 
         City city = new City("Grodno");
         city.addEstablishment("BAZA", EstablishmentType.CLUB);

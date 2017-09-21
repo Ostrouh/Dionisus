@@ -14,8 +14,14 @@ import java.util.List;
 /**
  * Default transformation engine that uses reflection to transform objects
  */
-public class SimpleDTOTransformer implements Transformer {
-    private static final Logger log = LoggerFactory.getLogger(SimpleDTOTransformer.class);
+public class TransformerImpl implements Transformer {
+    private static final Logger LOGGER = LoggerFactory.getLogger(TransformerImpl.class);
+
+    private final FieldCache cache;
+
+    public TransformerImpl() {
+        cache = new FieldCache();
+    }
 
     @Override
     public <T extends AbstractEntity, P extends BaseDTO<T>> P transform(T entity, Class<P> clazz) {
@@ -24,13 +30,12 @@ public class SimpleDTOTransformer implements Transformer {
         P dto = ReflectionUtil.createInstance(clazz);
 
         //copy all the similar fields
-        List<String> fields = ReflectionUtil.findSimilarFields(entity.getClass(), clazz);
-        ReflectionUtil.copyFields(entity, dto, fields);
+        ReflectionUtil.copyFields(entity, dto, cache.getFieldNames(entity.getClass(), clazz));
 
         dto.transform(entity);
 
-        if(log.isDebugEnabled()){
-            log.debug("SimpleDTOTransformer.transform: {} DTO object", CommonUtil.toString(dto));
+        if(LOGGER.isDebugEnabled()){
+            LOGGER.debug("TransformerImpl.transform: {} DTO object", CommonUtil.toString(dto));
         }
 
         return dto;
@@ -42,12 +47,11 @@ public class SimpleDTOTransformer implements Transformer {
 
         T entity = ReflectionUtil.createInstance(clazz);
 
-        List<String> fields = ReflectionUtil.findSimilarFields(dto.getClass(), clazz);
-        ReflectionUtil.copyFields(dto, entity, fields);
+       ReflectionUtil.copyFields(dto, entity, cache.getFieldNames(dto.getClass(), clazz));
         dto.untransform(entity);
 
-        if(log.isDebugEnabled()){
-            log.debug("SimpledTOTransformer.transform: {} entity",CommonUtil.toString(dto));
+        if(LOGGER.isDebugEnabled()){
+            LOGGER.debug("SimpledTOTransformer.transform: {} entity",CommonUtil.toString(dto));
         }
 
         return entity;
