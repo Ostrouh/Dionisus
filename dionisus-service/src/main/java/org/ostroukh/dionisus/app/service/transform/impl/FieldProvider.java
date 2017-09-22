@@ -9,14 +9,14 @@ import java.util.Map;
 /**
  * This class caches field names for each transformation pair
  */
-public class FieldCache {
+public class FieldProvider {
     /**
      * Mapping between transformation pair(class names) and field list.
      * Key is concatenate names of classes, value is list of fields
      */
     private final Map<String, List<String>> cache;
 
-    public FieldCache() {
+    public FieldProvider() {
         this.cache = new HashMap<>();
     }
 

@@ -39,6 +39,8 @@ public class CityResource extends BaseResource{
         transformer = new TransformerImpl();
 
         City city = new City("Grodno");
+        city.setDistrict("");
+        city.setRegion("GR");
         city.addEstablishment("BAZA", EstablishmentType.CLUB);
         service.saveCity(city);
     }

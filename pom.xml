@@ -6,7 +6,7 @@
 
     <groupId>org.ostroukh</groupId>
     <artifactId>dionisus</artifactId>
-    <version>0.1.2</version>
+    <version>0.1.3</version>
 
     <packaging>pom</packaging>
     <modules>
@@ -21,6 +21,7 @@
         <junit.version>4.12</junit.version>
         <jersey.version>2.19</jersey.version>
         <log4j.version>2.9.0</log4j.version>
+        <powermock.version>1.7.3</powermock.version>
     </properties>
 
     <dependencies>

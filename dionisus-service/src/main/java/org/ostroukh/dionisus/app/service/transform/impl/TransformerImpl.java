@@ -9,18 +9,16 @@ import org.ostroukh.dionisus.app.service.transform.Transformer;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.List;
-
 /**
  * Default transformation engine that uses reflection to transform objects
  */
 public class TransformerImpl implements Transformer {
     private static final Logger LOGGER = LoggerFactory.getLogger(TransformerImpl.class);
 
-    private final FieldCache cache;
+    private final FieldProvider cache;
 
     public TransformerImpl() {
-        cache = new FieldCache();
+        cache = new FieldProvider();
     }
 
     @Override

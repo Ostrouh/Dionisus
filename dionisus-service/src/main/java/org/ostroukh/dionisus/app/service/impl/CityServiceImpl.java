@@ -1,6 +1,5 @@
 package org.ostroukh.dionisus.app.service.impl;
 
-import org.apache.commons.lang3.StringUtils;
 import org.ostroukh.dionisus.app.infra.util.CommonUtil;
 import org.ostroukh.dionisus.app.model.entity.establishment.Establishment;
 import org.ostroukh.dionisus.app.model.entity.geography.City;
