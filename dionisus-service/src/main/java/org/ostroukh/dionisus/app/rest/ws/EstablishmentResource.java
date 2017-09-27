@@ -1,6 +1,6 @@
-package org.ostroukh.dionisus.app.rest.service;
+package org.ostroukh.dionisus.app.rest.ws;
 
-import org.ostroukh.dionisus.app.rest.service.base.BaseResource;
+import org.ostroukh.dionisus.app.rest.ws.base.BaseResource;
 import org.ostroukh.dionisus.app.service.EstablishmentService;
 import org.ostroukh.dionisus.app.service.impl.EstablishmentServiceImpl;
 import org.ostroukh.dionisus.app.service.transform.Transformer;
@@ -15,7 +15,7 @@ import java.util.List;
 
 @Path("establishments")
 /**
- * {@link EstablishmentResource} is REST web-service that handles city-related requests
+ * {@link EstablishmentResource} is REST web-ws that handles city-related requests
  * @author Eugene Ostroukh
  */
 

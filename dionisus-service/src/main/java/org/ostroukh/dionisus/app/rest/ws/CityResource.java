@@ -1,10 +1,10 @@
-package org.ostroukh.dionisus.app.rest.service;
+package org.ostroukh.dionisus.app.rest.ws;
 
 import org.apache.commons.lang3.math.NumberUtils;
 import org.ostroukh.dionisus.app.model.entity.establishment.EstablishmentType;
 import org.ostroukh.dionisus.app.model.entity.geography.City;
 import org.ostroukh.dionisus.app.rest.dto.CityDTO;
-import org.ostroukh.dionisus.app.rest.service.base.BaseResource;
+import org.ostroukh.dionisus.app.rest.ws.base.BaseResource;
 import org.ostroukh.dionisus.app.service.CityService;
 import org.ostroukh.dionisus.app.service.impl.CityServiceImpl;
 import org.ostroukh.dionisus.app.service.transform.Transformer;
@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 
 @Path("cities")
 /**
- * {@link CityResource} is REST web-service that handles city-related requests
+ * {@link CityResource} is REST web-ws that handles city-related requests
  * @author Eugene Ostroukh
  */
 public class CityResource extends BaseResource{

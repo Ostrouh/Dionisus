@@ -1,9 +1,9 @@
-package org.ostroukh.dionisus.app.rest.service;
+package org.ostroukh.dionisus.app.rest.ws;
 
 import org.glassfish.jersey.test.JerseyTest;
 import org.junit.Test;
 import org.ostroukh.dionisus.app.rest.dto.CityDTO;
-import org.ostroukh.dionisus.app.rest.service.config.JerseyConfig;
+import org.ostroukh.dionisus.app.rest.ws.config.JerseyConfig;
 
 import static org.junit.Assert.*;
 

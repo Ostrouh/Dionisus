@@ -1,4 +1,4 @@
-package org.ostroukh.dionisus.app.rest.service.base;
+package org.ostroukh.dionisus.app.rest.ws.base;
 
 import javax.ws.rs.core.Response;
 

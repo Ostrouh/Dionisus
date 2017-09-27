@@ -1,4 +1,4 @@
-package org.ostroukh.dionisus.app.rest.service.config;
+package org.ostroukh.dionisus.app.rest.ws.config;
 
 import org.glassfish.jersey.server.ResourceConfig;
 
@@ -6,7 +6,7 @@ import javax.ws.rs.ApplicationPath;
 
 @ApplicationPath("api")
 /**
- *REST web-service configuration for Jersey
+ *REST web-ws configuration for Jersey
  * @author Eugene Ostroukh
  */
 public class JerseyConfig extends ResourceConfig{
