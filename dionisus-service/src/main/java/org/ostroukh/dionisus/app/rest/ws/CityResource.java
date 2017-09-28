@@ -6,10 +6,9 @@ import org.ostroukh.dionisus.app.model.entity.geography.City;
 import org.ostroukh.dionisus.app.rest.dto.CityDTO;
 import org.ostroukh.dionisus.app.rest.ws.base.BaseResource;
 import org.ostroukh.dionisus.app.service.CityService;
-import org.ostroukh.dionisus.app.service.impl.CityServiceImpl;
 import org.ostroukh.dionisus.app.service.transform.Transformer;
-import org.ostroukh.dionisus.app.service.transform.impl.TransformerImpl;
 
+import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -34,9 +33,10 @@ public class CityResource extends BaseResource{
      */
     private final Transformer transformer;
 
-    public CityResource() {
-        service = new CityServiceImpl();
-        transformer = new TransformerImpl();
+    @Inject
+    public CityResource(CityService service, Transformer transformer) {
+        this.service = service;
+        this.transformer = transformer;
 
         City city = new City("Grodno");
         city.setDistrict("");

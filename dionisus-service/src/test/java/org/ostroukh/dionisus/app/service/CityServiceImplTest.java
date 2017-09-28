@@ -2,17 +2,18 @@ package org.ostroukh.dionisus.app.service;
 
 import org.junit.Before;
 import org.junit.Test;
-import static org.junit.Assert.*;
-
 import org.ostroukh.dionisus.app.model.entity.establishment.Establishment;
 import org.ostroukh.dionisus.app.model.entity.establishment.EstablishmentType;
 import org.ostroukh.dionisus.app.model.entity.geography.City;
 import org.ostroukh.dionisus.app.model.search.criteria.EstablishmentCriteria;
 import org.ostroukh.dionisus.app.model.search.criteria.range.RangeCriteria;
+import org.ostroukh.dionisus.app.persistence.repository.inmemory.CityRepositoryInMemory;
 import org.ostroukh.dionisus.app.service.impl.CityServiceImpl;
 
 import java.util.List;
 import java.util.Optional;
+
+import static org.junit.Assert.*;
 
 /**
  *Contain unit-tests for {@link CityServiceImpl}
@@ -24,7 +25,7 @@ public class CityServiceImplTest {
 
     @Before
     public void setup(){
-        service = new CityServiceImpl();
+        service = new CityServiceImpl(new CityRepositoryInMemory());
     }
 
     @Test

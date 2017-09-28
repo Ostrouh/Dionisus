@@ -12,6 +12,7 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="dionisus-model" />
+    <orderEntry type="module" module-name="dionisus-persistence" />
     <orderEntry type="library" name="Maven: org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.25" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.hk2.external:javax.inject:2.5.0-b30" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.grizzly:grizzly-http-server:2.3.28" level="project" />
