@@ -4,36 +4,46 @@ import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 import org.ostroukh.dionisus.app.model.entity.person.Account;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 /**
  * Base class for all business entities
  * @author Eugene Ostroukh
  */
+@MappedSuperclass
 public abstract class AbstractEntity {
     /**
      * Unique entity identifier
      */
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     /**
      * Timestamp of entity creation
      */
+    @Column(name = "CREATED_AT", nullable = false, updatable = false)
     private LocalDateTime createdAt;
 
     /**
      * Timestamp of entity last modification
      */
+    @Column(name = "MODIFIED_AT", insertable = false)
     private LocalDateTime modifiedAt;
 
     /**
      * Person who created specific entity
      */
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CREATED_BY")
     private Account createdBy;
 
     /**
      * Last person who modified entity
      */
+    @OneToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "MODIFIED_BY")
     private Account modifiedBy;
 
     public int getId() {
@@ -77,18 +87,24 @@ public abstract class AbstractEntity {
     }
 
     @Override
-    public int hashCode() {
-//        return HashCodeBuilder.reflectionHashCode(17, 37,this);
+    public boolean equals(Object o) {
+        if (this == o) return true;
 
+        if (o == null || getClass() != o.getClass()) return false;
+
+        AbstractEntity that = (AbstractEntity) o;
+
+        return new EqualsBuilder()
+                .append(id, that.id)
+                .append(createdAt, that.createdAt)
+                .isEquals();
+    }
+
+    @Override
+    public int hashCode() {
         return new HashCodeBuilder(17, 37)
                 .append(id)
                 .append(createdAt)
                 .toHashCode();
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-
-        return EqualsBuilder.reflectionEquals(this, obj);
     }
 }

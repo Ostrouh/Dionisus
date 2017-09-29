@@ -2,32 +2,41 @@ package org.ostroukh.dionisus.app.model.entity.establishment;
 
 import org.ostroukh.dionisus.app.model.entity.base.AbstractEntity;
 
+import javax.persistence.*;
+
 /**
  * Any tables which are in specified establishment
  * @author Eugene Ostroukh
  */
-public class Table extends AbstractEntity {
+@Table(name = "TABLE")
+@Entity
+public class ATable extends AbstractEntity {
     /**
      * Catering establishment that contains specified table
      */
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "ESTABLISHMENT_ID")
     private Establishment establishment;
 
     /**
      * Number of table
      */
+    @Column(name = "TABLE_NO", length = 2)
     private int tableNumber;
 
     /**
      * Number of seats at the table
      */
+    @Column(name = "SEATS_COUNT", length = 2)
     private int seatsCount;
 
     /**
      * Flag indicating that the table is reserved
      */
+    @Column(name = "IS_ORDERED")
     private boolean isOrdered;
 
-    public Table(Establishment establishment, int tableNumber, int seatsCount, boolean isOrdered) {
+    public ATable(Establishment establishment, int tableNumber, int seatsCount, boolean isOrdered) {
         this.establishment = establishment;
         this.tableNumber = tableNumber;
         this.seatsCount = seatsCount;

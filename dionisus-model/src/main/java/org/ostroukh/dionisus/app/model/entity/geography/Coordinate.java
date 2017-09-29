@@ -1,12 +1,18 @@
 package org.ostroukh.dionisus.app.model.entity.geography;
 
+import javax.persistence.Column;
+import javax.persistence.Embeddable;
+
 /**
  * Geographical coordinate of an object
  * @author Eugene Ostroukh
  */
+@Embeddable
 public class Coordinate {
+    @Column(name = "X")
     private double x;
 
+    @Column(name = "Y")
     private double y;
 
     public Coordinate(double x, double y) {

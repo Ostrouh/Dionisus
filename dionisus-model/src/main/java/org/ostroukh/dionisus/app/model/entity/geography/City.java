@@ -5,6 +5,7 @@ import org.ostroukh.dionisus.app.model.entity.base.AbstractEntity;
 import org.ostroukh.dionisus.app.model.entity.establishment.Establishment;
 import org.ostroukh.dionisus.app.model.entity.establishment.EstablishmentType;
 
+import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
@@ -13,24 +14,30 @@ import java.util.Set;
  * Any locality that contains establishment for table reserving
  * @author Eugene Ostroukh
  */
+@Table(name = "CITY")
+@Entity
 public class City extends AbstractEntity{
+    @Column(name = "NAME", nullable = false, length = 32)
     private String name;
 
     /**
      * Name of the district where city is placed
      */
+    @Column(name = "DISTRICT", nullable = false, length = 32)
     private String district;
 
     /**
      * Name of the region where district is located.
      * Region is top-level area in the country
      */
+    @Column(name = "REGION", nullable = false, length = 32)
     private String region;
 
     /**
      * Set of entertaining establishments that is linked to this
      * city
      */
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "city", orphanRemoval = true)
     private Set<Establishment> establishments;
 
     public City() {

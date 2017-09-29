@@ -5,11 +5,19 @@
     <parent>
         <artifactId>dionisus</artifactId>
         <groupId>org.ostroukh</groupId>
-        <version>0.2.1</version>
+        <version>0.2.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>dionisus-model</artifactId>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+    </dependencies>
 
 
 </project>
