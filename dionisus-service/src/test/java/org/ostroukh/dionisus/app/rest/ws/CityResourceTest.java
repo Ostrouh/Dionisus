@@ -5,14 +5,15 @@ import org.junit.Test;
 import org.ostroukh.dionisus.app.rest.dto.CityDTO;
 import org.ostroukh.dionisus.app.rest.ws.config.JerseyConfig;
 
-import static org.junit.Assert.*;
-
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.core.Application;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.Map;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 /**
  * {@link CityResourceTest} is integration test that verifies
@@ -64,6 +65,8 @@ public class CityResourceTest extends JerseyTest{
     public void testSaveCitySuccess(){
         CityDTO city = new CityDTO();
         city.setName("Grodno");
+        city.setDistrict("gr");
+        city.setRegion("GR");
         Response response = target("cities").request().post(Entity.entity(city, MediaType.APPLICATION_JSON));
         assertEquals(response.getStatus(), Response.Status.NO_CONTENT.getStatusCode());
     }

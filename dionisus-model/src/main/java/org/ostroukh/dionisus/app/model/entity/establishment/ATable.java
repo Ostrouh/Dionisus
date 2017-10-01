@@ -8,7 +8,7 @@ import javax.persistence.*;
  * Any tables which are in specified establishment
  * @author Eugene Ostroukh
  */
-@Table(name = "TABLE")
+@Table(name = "A_TABLE")
 @Entity
 public class ATable extends AbstractEntity {
     /**

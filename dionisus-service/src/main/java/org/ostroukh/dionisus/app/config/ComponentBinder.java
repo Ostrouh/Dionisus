@@ -1,8 +1,9 @@
 package org.ostroukh.dionisus.app.config;
 
 import org.glassfish.hk2.utilities.binding.AbstractBinder;
+import org.ostroukh.dionisus.app.hibernate.SessionFactoryBuilder;
 import org.ostroukh.dionisus.app.persistence.repository.CityRepository;
-import org.ostroukh.dionisus.app.persistence.repository.inmemory.CityRepositoryInMemory;
+import org.ostroukh.dionisus.app.persistence.repository.hibernate.HibernateCityRepository;
 import org.ostroukh.dionisus.app.service.CityService;
 import org.ostroukh.dionisus.app.service.impl.CityServiceImpl;
 import org.ostroukh.dionisus.app.service.transform.Transformer;
@@ -16,7 +17,7 @@ import javax.inject.Singleton;
 public class ComponentBinder extends AbstractBinder{
     @Override
     protected void configure() {
-        bind(CityRepositoryInMemory.class)
+        bind(HibernateCityRepository.class)
                 .to(CityRepository.class)
                 .in(Singleton.class);
         bind(TransformerImpl.class)
@@ -24,6 +25,9 @@ public class ComponentBinder extends AbstractBinder{
                 .in(Singleton.class);
         bind(CityServiceImpl.class)
                 .to(CityService.class)
+                .in(Singleton.class);
+        bind(SessionFactoryBuilder.class)
+                .to(SessionFactoryBuilder.class)
                 .in(Singleton.class);
     }
 }

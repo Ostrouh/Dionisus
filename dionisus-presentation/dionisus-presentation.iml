@@ -24,9 +24,9 @@
     <orderEntry type="library" name="Maven: dom4j:dom4j:1.6.1" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate.common:hibernate-commons-annotations:5.0.1.Final" level="project" />
     <orderEntry type="module" module-name="dionisus-persistence" />
+    <orderEntry type="library" name="Maven: org.glassfish.hk2.external:javax.inject:2.5.0-b43" level="project" />
     <orderEntry type="library" scope="RUNTIME" name="Maven: org.hibernate:hibernate-java8:5.2.10.Final" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.jersey.containers:jersey-container-grizzly2-http:2.25" level="project" />
-    <orderEntry type="library" name="Maven: org.glassfish.hk2.external:javax.inject:2.5.0-b30" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.grizzly:grizzly-http-server:2.3.28" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.grizzly:grizzly-http:2.3.28" level="project" />
     <orderEntry type="library" name="Maven: org.glassfish.grizzly:grizzly-framework:2.3.28" level="project" />

@@ -45,7 +45,7 @@ public class Establishment extends AbstractEntity{
     private EstablishmentType establishmentType;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY, mappedBy = "establishment", orphanRemoval = true)
-    private Set<Table> tables;
+    private Set<ATable> tables;
 
     /**
      * You shouldn't create establishment object directly. Use
@@ -104,11 +104,11 @@ public class Establishment extends AbstractEntity{
         this.establishmentType = establishmentType;
     }
 
-    public Set<Table> getTables() {
+    public Set<ATable> getTables() {
         return CommonUtil.getSafeSet(tables);
     }
 
-    public void setTables(Set<Table> tables) {
+    public void setTables(Set<ATable> tables) {
         this.tables = tables;
     }
 
