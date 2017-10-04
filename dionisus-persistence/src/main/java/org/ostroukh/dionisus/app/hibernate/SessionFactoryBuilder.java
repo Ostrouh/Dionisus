@@ -4,6 +4,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.service.ServiceRegistry;
+import org.ostroukh.dionisus.app.hibernate.interceptor.TimestampInterceptor;
 import org.ostroukh.dionisus.app.infra.exeption.PersistenceException;
 import org.ostroukh.dionisus.app.model.entity.establishment.ATable;
 import org.ostroukh.dionisus.app.model.entity.establishment.Establishment;
@@ -25,7 +26,7 @@ public class SessionFactoryBuilder {
     private final SessionFactory sessionFactory;
 
     public SessionFactoryBuilder() {
-        ServiceRegistry registry = new StandardServiceRegistryBuilder().build();
+        ServiceRegistry registry = new StandardServiceRegistryBuilder().applySettings(loadProperties()).build();
 
         MetadataSources sources = new MetadataSources(registry);
 
@@ -36,7 +37,10 @@ public class SessionFactoryBuilder {
         sources.addAnnotatedClass(Coordinate.class);
         sources.addAnnotatedClass(Account.class);
 
-        sessionFactory = sources.buildMetadata().buildSessionFactory();
+        org.hibernate.boot.SessionFactoryBuilder builder = sources.getMetadataBuilder().build().getSessionFactoryBuilder()
+                .applyInterceptor(new TimestampInterceptor());
+
+        sessionFactory = builder.build();
     }
 
     private Properties loadProperties(){
